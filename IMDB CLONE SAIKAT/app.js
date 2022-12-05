@@ -12,16 +12,13 @@ const trending_el = document.querySelector('.trending .movies-grid')
 
 const popup_container = document.querySelector('.popup-container')
 
+
+
+//toggle box 
 const checkbox=document.getElementById('checkbox');
 checkbox.addEventListener('change',()=>{
     document.body.classList.toggle('dark');
 });
-
-
-
-
-
-
 
 
 //whenever any movie card is selected it shows popup
@@ -38,12 +35,13 @@ async function get_movie_by_search (search_term) {
     return respData.results
 }
 
+//to list the movies,which are searched for
 btn.addEventListener('click', add_searched_movies_to_dom)
 
 async function add_searched_movies_to_dom () {
     const data = await get_movie_by_search(input.value)
 
-    main_grid_title.innerText = `Search Results...`
+     main_grid_title.innerText = `Search Results...`
     main_grid.innerHTML = data.map(e => {
         return `
             <div class="card" data-id="${e.id}">
